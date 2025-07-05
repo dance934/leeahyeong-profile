@@ -1,0 +1,88 @@
+
+.quiz-game {
+  background-color: #282c34;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.question-section {
+  margin-bottom: 20px;
+}
+
+.question-count {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.question-text {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.answer-section button {
+  width: 100%;
+  font-size: 18px;
+  color: white;
+  background-color: #61dafb;
+  border: none;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.answer-section button:hover {
+  background-color: #21a1f2;
+}
+
+.answer-section button:focus {
+  outline: none;
+}
+
+.score-section {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.score-section button {
+    display: block;
+    font-size: 18px;
+    color: #282c34;
+    background-color: #61dafb;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px auto 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.score-section button:hover {
+    background-color: #21a1f2;
+}
+
+.correct-answers {
+  margin-top: 20px;
+  text-align: left;
+  font-size: 16px;
+}
+
+.correct-answers h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.correct-answers ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.correct-answers li {
+  margin-bottom: 8px;
+}
