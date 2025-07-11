@@ -79,7 +79,7 @@ function App() {
               <Card>
                 <Row noGutters>
                   <Col md={3}>
-                    <Card.Img src="/images/leeahyeong-1.jpg" style={{ objectFit: 'cover', height: '100%' }} />
+                    <Card.Img src={process.env.PUBLIC_URL + "/images/leeahyeong-1.jpg"} style={{ objectFit: 'cover', height: '100%' }} />
                   </Col>
                   <Col md={9}>
                     <Card.Body>
