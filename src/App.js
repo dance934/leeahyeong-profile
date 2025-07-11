@@ -11,6 +11,7 @@ function App() {
     return savedLikes ? JSON.parse(savedLikes) : {};
   });
   const [showQuiz, setShowQuiz] = useState(false);
+  const [expanded, setExpanded] = useState(false); // Add expanded state for Navbar
 
   useEffect(() => {
     localStorage.setItem('videoLikes', JSON.stringify(likes));
@@ -49,12 +50,13 @@ function App() {
     } else {
       navigate();
     }
+    setExpanded(false); // Close Navbar on navigation
   };
 
   return (
     <div className="App">
       <Snowfall />
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg="dark" variant="dark" expand="lg" expanded={expanded} onToggle={() => setExpanded(!expanded)}>
         <Container>
           <Navbar.Brand href="#home" onClick={(e) => { e.preventDefault(); handleNavigate('#profile'); }}>李雅英 (Lee Ah-yeong)</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -63,7 +65,7 @@ function App() {
               <Nav.Link href="#profile" onClick={(e) => { e.preventDefault(); handleNavigate('#profile'); }}>基本資料</Nav.Link>
               <Nav.Link href="#videos" onClick={(e) => { e.preventDefault(); handleNavigate('#videos'); }}>影片</Nav.Link>
               <Nav.Link href="#schedule" onClick={(e) => { e.preventDefault(); handleNavigate('#schedule'); }}>排班表</Nav.Link>
-              <Nav.Link onClick={() => setShowQuiz(true)}>粉絲小遊戲</Nav.Link>
+              <Nav.Link onClick={() => { setShowQuiz(true); setExpanded(false); }}>粉絲小遊戲</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
