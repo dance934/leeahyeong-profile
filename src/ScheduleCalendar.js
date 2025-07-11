@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import './ScheduleCalendar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 function ScheduleCalendar() {
   const [value, onChange] = useState(new Date());
+  const [isBeating, setIsBeating] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsBeating(prev => !prev);
+    }, 250); // Toggle every 0.25 seconds for a faster beat cycle
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Define the working days for July
   const workingDays = [
@@ -23,7 +34,7 @@ function ScheduleCalendar() {
 
   const tileContent = ({ date, view }) => {
     if (view === 'month' && workingDays.includes(date.toDateString())) {
-      return <span className="heart-icon">❤️</span>;
+      return <FontAwesomeIcon icon={faHeart} className={`heart-icon ${isBeating ? 'heart-beat-active' : ''}`} />;
     }
     return null;
   };
