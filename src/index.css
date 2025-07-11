@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #ffb8bf !important; /* 粉紅色，使用 !important 確保優先級 */
 }
 
 code {
