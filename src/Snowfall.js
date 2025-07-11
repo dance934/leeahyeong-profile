@@ -10,7 +10,7 @@ const Snowfall = ({ numberOfSnowflakes = 50 }) => {
       for (let i = 0; i < numberOfSnowflakes; i++) {
         newSnowflakes.push({
           id: i,
-          size: Math.random() * 10 + 20, // Size between 10 and 20px
+          size: Math.random() * 5 + 10, // Size between 10 and 20px
           position: Math.random() * 100, // Position across the width of the screen
           animationDuration: Math.random() * 10 + 5, // Duration between 5 and 15 seconds
         });

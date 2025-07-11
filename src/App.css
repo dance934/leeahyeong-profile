@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #ffdae6; /* 稍微深一點的粉紅色 */
+  background-color: #FFC0CB; /* 粉紅色 */
   min-height: 100vh;
   position: relative; /* For snowflake positioning */
   overflow: hidden; /* Hide overflowing snowflakes */
