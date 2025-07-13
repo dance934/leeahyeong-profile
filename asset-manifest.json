@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/leeahyeong-profile/static/css/main.c2438e8e.css",
-    "main.js": "/leeahyeong-profile/static/js/main.dec81d11.js",
+    "main.js": "/leeahyeong-profile/static/js/main.26a6831f.js",
     "static/js/453.5be45a84.chunk.js": "/leeahyeong-profile/static/js/453.5be45a84.chunk.js",
     "index.html": "/leeahyeong-profile/index.html",
     "main.c2438e8e.css.map": "/leeahyeong-profile/static/css/main.c2438e8e.css.map",
-    "main.dec81d11.js.map": "/leeahyeong-profile/static/js/main.dec81d11.js.map",
+    "main.26a6831f.js.map": "/leeahyeong-profile/static/js/main.26a6831f.js.map",
     "453.5be45a84.chunk.js.map": "/leeahyeong-profile/static/js/453.5be45a84.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c2438e8e.css",
-    "static/js/main.dec81d11.js"
+    "static/js/main.26a6831f.js"
   ]
 }
