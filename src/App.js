@@ -96,9 +96,6 @@ function App() {
                             <a href="https://www.instagram.com/yyyoungggggg/?hl=zh-tw" target="_blank" rel="noopener noreferrer">
                               yyyoungggggg
                             </a>
-                            <a href="https://www.instagram.com/yyyoungggggg/?hl=zh-tw" target="_blank" rel="noopener noreferrer">
-                              <img src={process.env.PUBLIC_URL + "/images/leeahyeong-1.jpg"} alt="Instagram" className="social-icon" />
-                            </a>
                           </li>
                         </ul>
                       </Card.Text>
