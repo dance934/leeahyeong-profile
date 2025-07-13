@@ -91,7 +91,15 @@ function App() {
                           <li><strong>出生日期:</strong> 1992年2月9日</li>
                           <li><strong>身高:</strong> 170公分</li>
                           <li><strong>職業:</strong> 啦啦隊員</li>
-                          <li><strong>Instagram:</strong> <a href="https://www.instagram.com/yyyoungggggg/?hl=zh-tw" target="_blank" rel="noopener noreferrer">yyyoungggggg</a></li>
+                          <li>
+                            <strong>Instagram:</strong> 
+                            <a href="https://www.instagram.com/yyyoungggggg/?hl=zh-tw" target="_blank" rel="noopener noreferrer">
+                              yyyoungggggg
+                            </a>
+                            <a href="https://www.instagram.com/yyyoungggggg/?hl=zh-tw" target="_blank" rel="noopener noreferrer">
+                              <img src={process.env.PUBLIC_URL + "/images/leeahyeong-1.jpg"} alt="Instagram" className="social-icon" />
+                            </a>
+                          </li>
                         </ul>
                       </Card.Text>
                     </Card.Body>
