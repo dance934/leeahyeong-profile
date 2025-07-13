@@ -1,4 +1,3 @@
-
 .quiz-game {
   background-color: #282c34;
   color: white;
@@ -51,7 +50,6 @@
 }
 
 .score-section button {
-    display: block;
     font-size: 18px;
     color: #282c34;
     background-color: #61dafb;
@@ -85,4 +83,15 @@
 
 .correct-answers li {
   margin-bottom: 8px;
+}
+
+.quiz-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+.quiz-buttons button {
+  margin: 0; /* Reset margin from .score-section button */
 }
