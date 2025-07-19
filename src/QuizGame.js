@@ -1,5 +1,4 @@
-import React, { useState, useRef } from 'react';
-import html2canvas from 'html2canvas';
+import React, { useState } from 'react';
 import './QuizGame.css';
 
 const allQuestions = [
@@ -111,8 +110,6 @@ export default function QuizGame({ onGameOver }) {
   const [showScore, setShowScore] = useState(false);
   const [score, setScore] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
-  const scoreSectionRef = useRef(null);
-  const correctAnswersRef = useRef(null);
 
   const handleAnswerOptionClick = (isCorrect, answerText) => {
     setUserAnswers([...userAnswers, { question: questions[currentQuestion].questionText, answer: answerText, isCorrect }]);
@@ -128,51 +125,40 @@ export default function QuizGame({ onGameOver }) {
     }
   };
 
-  
+  const handleShareResult = async () => {
+    const title = '李雅英粉絲小遊戲結果';
+    const gameUrl = 'https://dance934.github.io/leeahyeong-profile';
+    const shareText = `我在李雅英粉絲小遊戲中答對了 ${score} / ${questions.length} 題！\n\n歡迎大家來挑戰！\n${gameUrl}`;
 
-  const handleShareScreenshot = async () => {
-    if (!correctAnswersRef.current) return;
+    const isMobile = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    try {
-      const canvas = await html2canvas(correctAnswersRef.current, {
-        useCORS: true,
-        allowTaint: true,
-        scale: window.devicePixelRatio,
-      });
-      canvas.toBlob(async (blob) => {
-        if (blob) {
-          const filesArray = [new File([blob], 'quiz_results.png', { type: 'image/png' })];
-          if (navigator.canShare && navigator.canShare({ files: filesArray })) {
-            await navigator.share({
-              files: filesArray,
-              title: '李雅英粉絲小遊戲結果截圖',
-              text: `我在李雅英粉絲小遊戲中答對了 ${score} / ${questions.length} 題！`,
-            });
-            alert('截圖已分享！');
-          } else {
-            alert('您的瀏覽器不支持分享圖片，請手動保存截圖。');
-            // Fallback for browsers that don't support sharing files
-            const link = document.createElement('a');
-            link.download = 'quiz_results.png';
-            link.href = canvas.toDataURL();
-            link.click();
-          }
-        } else {
-          alert('無法生成截圖。');
-        }
-      }, 'image/png');
-    } catch (error) {
-      console.error('截圖分享失敗', error);
-      alert('截圖分享失敗，請稍後再試。');
+    if (navigator.share && isMobile) {
+      try {
+        await navigator.share({
+          title: title,
+          text: shareText,
+          url: gameUrl,
+        });
+        alert('結果已分享！');
+      } catch (error) {
+        console.error('分享失敗', error);
+      }
+    } else {
+      try {
+        await navigator.clipboard.writeText(shareText);
+        alert('結果已複製到剪貼簿！');
+      } catch (err) {
+        alert('無法將結果複製到剪貼簿。');
+      }
     }
   };
 
   return (
     <div className='quiz-game'>
       {showScore ? (
-        <div className='score-section' ref={scoreSectionRef}>
+        <div className='score-section'>
           你答對了 {score} / {questions.length} 題
-          <div className='correct-answers' ref={correctAnswersRef}>
+          <div className='correct-answers'>
             <h4>所有題目:</h4>
             <ul>
               {userAnswers.map((userAnswer, index) => {
@@ -190,7 +176,7 @@ export default function QuizGame({ onGameOver }) {
           </div>
           <div className="quiz-buttons">
             <button onClick={onGameOver}>返回主頁</button>
-            <button onClick={handleShareScreenshot} style={{ marginLeft: '10px' }}>分享結果</button>
+            <button onClick={handleShareResult} style={{ marginLeft: '10px' }}>分享結果</button>
           </div>
         </div>
       ) : (
