@@ -3,6 +3,7 @@ import { Navbar, Nav, Container, Card, Row, Col, Button } from 'react-bootstrap'
 import ScheduleCalendar from './ScheduleCalendar';
 import Snowfall from './Snowfall';
 import QuizGame from './QuizGame';
+import FanAssistant from './FanAssistant';
 
 function App() {
   const videoRowRef = useRef(null);
@@ -11,6 +12,7 @@ function App() {
     return savedLikes ? JSON.parse(savedLikes) : {};
   });
   const [showQuiz, setShowQuiz] = useState(false);
+  const [showFanAssistant, setShowFanAssistant] = useState(false);
   const [expanded, setExpanded] = useState(false); // Add expanded state for Navbar
 
   useEffect(() => {
@@ -43,8 +45,9 @@ function App() {
       }
     };
 
-    if (showQuiz) {
+    if (showQuiz || showFanAssistant) {
       setShowQuiz(false);
+      setShowFanAssistant(false);
       // Wait for the DOM to update before scrolling
       setTimeout(navigate, 100);
     } else {
@@ -65,7 +68,8 @@ function App() {
               <Nav.Link href="#profile" onClick={(e) => { e.preventDefault(); handleNavigate('#profile'); }}>基本資料</Nav.Link>
               <Nav.Link href="#videos" onClick={(e) => { e.preventDefault(); handleNavigate('#videos'); }}>影片</Nav.Link>
               <Nav.Link href="#schedule" onClick={(e) => { e.preventDefault(); handleNavigate('#schedule'); }}>排班表</Nav.Link>
-              <Nav.Link onClick={() => { setShowQuiz(true); setExpanded(false); }}>粉絲小遊戲</Nav.Link>
+              <Nav.Link onClick={() => { setShowQuiz(true); setShowFanAssistant(false); setExpanded(false); }}>粉絲小遊戲</Nav.Link>
+              <Nav.Link onClick={() => { setShowFanAssistant(true); setShowQuiz(false); setExpanded(false); }}>智能小英</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
@@ -74,6 +78,8 @@ function App() {
       <Container style={{ marginTop: '2rem' }}>
         {showQuiz ? (
           <QuizGame onGameOver={() => setShowQuiz(false)} />
+        ) : showFanAssistant ? (
+          <FanAssistant onBack={() => setShowFanAssistant(false)} />
         ) : (
           <>
             <section id="profile" style={{ marginBottom: '2rem' }}>
