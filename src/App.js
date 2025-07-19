@@ -5,6 +5,7 @@ import Snowfall from './Snowfall';
 import QuizGame from './QuizGame';
 import FanAssistant from './FanAssistant';
 import Album from './Album';
+import Videos from './Videos';
 
 function App() {
   const videoRowRef = useRef(null);
@@ -15,6 +16,7 @@ function App() {
   const [showQuiz, setShowQuiz] = useState(false);
   const [showFanAssistant, setShowFanAssistant] = useState(false);
   const [showAlbum, setShowAlbum] = useState(false);
+  const [showVideos, setShowVideos] = useState(false);
   const [expanded, setExpanded] = useState(false); // Add expanded state for Navbar
 
   useEffect(() => {
@@ -47,10 +49,11 @@ function App() {
       }
     };
 
-    if (showQuiz || showFanAssistant || showAlbum) {
+    if (showQuiz || showFanAssistant || showAlbum || showVideos) {
       setShowQuiz(false);
       setShowFanAssistant(false);
       setShowAlbum(false);
+      setShowVideos(false);
       // Wait for the DOM to update before scrolling
       setTimeout(navigate, 100);
     } else {
@@ -69,9 +72,9 @@ function App() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#profile" onClick={(e) => { e.preventDefault(); handleNavigate('#profile'); }}>基本資料</Nav.Link>
-              <Nav.Link onClick={() => { setShowAlbum(true); setShowQuiz(false); setShowFanAssistant(false); setExpanded(false); }}>相片</Nav.Link>
-              <Nav.Link href="#videos" onClick={(e) => { e.preventDefault(); handleNavigate('#videos'); }}>影片</Nav.Link>
-              <Nav.Link href="#schedule" onClick={(e) => { e.preventDefault(); handleNavigate('#schedule'); }}>排班表</Nav.Link>
+              <Nav.Link onClick={() => { setShowAlbum(true); setShowQuiz(false); setShowFanAssistant(false); setShowVideos(false); setExpanded(false); }}>相片</Nav.Link>
+              <Nav.Link onClick={() => { setShowVideos(true); setShowQuiz(false); setShowFanAssistant(false); setShowAlbum(false); setExpanded(false); }}>影片</Nav.Link>
+
               <Nav.Link onClick={() => { setShowQuiz(true); setShowFanAssistant(false); setExpanded(false); }}>粉絲小遊戲</Nav.Link>
               <Nav.Link onClick={() => { setShowFanAssistant(true); setShowQuiz(false); setExpanded(false); }}>智能小英</Nav.Link>
             </Nav>
@@ -86,6 +89,8 @@ function App() {
           <FanAssistant onBack={() => setShowFanAssistant(false)} />
         ) : showAlbum ? (
           <Album />
+        ) : showVideos ? (
+          <Videos />
         ) : (
           <>
             <section id="profile" style={{ marginBottom: '2rem' }}>
@@ -104,7 +109,7 @@ function App() {
                           <li><strong>身高:</strong> 170公分</li>
                           <li><strong>職業:</strong> 啦啦隊員</li>
                           <li>
-                            <strong>Instagram:</strong> 
+                            <strong>Instagram:</strong>
                             <a href="https://www.instagram.com/yyyoungggggg/?hl=zh-tw" target="_blank" rel="noopener noreferrer">
                               yyyoungggggg
                             </a>
@@ -116,48 +121,6 @@ function App() {
                 </Row>
               </Card>
             </section>
-
-            <section id="videos">
-              <h2>影片</h2>
-              <div className="video-carousel-container">
-                <div className="d-flex justify-content-end mb-2">
-                  <Button variant="secondary" className="scroll-button left me-2" onClick={() => scroll('left')}>&lt;</Button>
-                  <Button variant="secondary" className="scroll-button right" onClick={() => scroll('right')}>&gt;</Button>
-                </div>
-                <div ref={videoRowRef} className="video-scroll-wrapper flex-grow-1 overflow-auto pb-3 custom-scrollbar">
-                  <Row className="flex-nowrap ">
-                    {[
-                      "z6yXVoF_UR8",
-                      "ZNI0KlV0GG0",
-                      "GHjh6nGxI0A",
-                      "hj0XRkFVadk",
-                    ].map((videoId, index) => (
-                      <Col xs={12} md={4} key={index} style={{ marginBottom: '1rem' }}>
-                        <Card>
-                          <Card.Body>
-                            <div className="embed-responsive" style={{ paddingBottom: '177.78%', position: 'relative', height: 0, overflow: 'hidden' }}>
-                              <iframe
-                                className="embed-responsive-item"
-                                src={`https://www.youtube.com/embed/${videoId}`}
-                                allowFullScreen
-                                title={`YouTube video ${index + 1}`}
-                                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                              ></iframe>
-                            </div>
-                            <div className="d-flex justify-content-between align-items-center mt-2">
-                              <Button variant="light" onClick={() => handleLike(videoId)}>
-                                ❤️ {likes[videoId] || 0}
-                              </Button>
-                            </div>
-                          </Card.Body>
-                        </Card>
-                      </Col>
-                    ))}
-                  </Row>
-                </div>
-
-              </div>
-            </section >
 
             <section id="schedule" style={{ marginBottom: '2rem' }}>
               <h2>排班表</h2>
