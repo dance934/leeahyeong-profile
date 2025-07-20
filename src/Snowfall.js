@@ -20,7 +20,7 @@ const Snowfall = ({ numberOfSnowflakes = 50 }) => {
 
     setTimeout(() => {
       generateSnowflakes();
-    }, 3000); // Delay to allow the component to mount before generating snowflakes
+    }, 500); // Delay to allow the component to mount before generating snowflakes
 
     // Add keyframes for snowflake animation to the head of the document
     const styleSheet = document.createElement("style");
