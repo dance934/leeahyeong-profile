@@ -1,0 +1,66 @@
+.tree-timeline-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 20px;
+}
+
+.tree-svg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  width: 100px; /* Adjust tree width */
+  z-index: 0;
+}
+
+.timeline-event-card {
+  position: absolute;
+  width: 40%; /* Adjust card width */
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.timeline-event-card.left {
+  right: calc(50% + 50px); /* Right edge of card is 400px to the left of center */
+  text-align: right;
+}
+
+.timeline-event-card.right {
+  left: calc(50% + 50px); /* Left edge of card is 400px to the right of center */
+  text-align: left;
+}
+
+.timeline-event-card .card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-event-card .card-body {
+  padding: 15px;
+}
+
+.timeline-event-card.left::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0; /* Starts at the card's right edge */
+  width: 10px; /* Extends 10px to the right */
+  height: 2px;
+  background: #8B4513;
+  transform: translateY(-50%);
+}
+
+.timeline-event-card.right::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0; /* Starts at the card's left edge */
+  width: 10px; /* Extends 10px to the left */
+  height: 2px;
+  background: #8B4513;
+  transform: translateY(-50%);
+}

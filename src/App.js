@@ -6,6 +6,7 @@ import QuizGame from './QuizGame';
 import FanAssistant from './FanAssistant';
 import Album from './Album';
 import Videos from './Videos';
+import CareerTimeline from './CareerTimeline';
 
 function App() {
   const videoRowRef = useRef(null);
@@ -124,23 +125,10 @@ function App() {
 
             <section id="career" style={{ marginBottom: '2rem' }}>
               <h2>職業生涯</h2>
-              <Card>
-                <Card.Body>
-                  <Card.Text as="div">
-                    <ul>
-                      <li><strong>2015年:</strong> 以啦啦隊員身份出道</li>
-                      <li><strong>2018年:</strong> 擔任韓國職棒NC恐龍啦啦隊</li>
-                      <li><strong>2020年:</strong> 轉戰韓國職棒KT巫師啦啦隊</li>
-                      <li><strong>2023年:</strong> 加入台灣職棒富邦悍將啦啦隊Fubon Angels</li>
-                    </ul>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
+              <CareerTimeline />
             </section>
 
-            
-
-            <section id="schedule" style={{ marginBottom: '2rem' }}>
+<section id="schedule" style={{ marginBottom: '2rem' }}>
               <h2>排班表</h2>
               <ScheduleCalendar />
             </section>
