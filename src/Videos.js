@@ -47,10 +47,10 @@ const Videos = () => {
               "GHjh6nGxI0A",
               "hj0XRkFVadk",
             ].map((videoId, index) => (
-              <Col xs={12} md={4} key={index} style={{ marginBottom: '1rem' }}>
+              <Col xs={12} md={6} key={index} style={{ marginBottom: '1rem' }}>
                 <Card>
                   <Card.Body>
-                    <div className="embed-responsive" style={{ paddingBottom: '177.78%', position: 'relative', height: 0, overflow: 'hidden' }}>
+                    <div className="embed-responsive" style={{ position: 'relative', height: 0, overflow: 'hidden' }}>
                       <iframe
                         className="embed-responsive-item"
                         src={`https://www.youtube.com/embed/${videoId}`}
