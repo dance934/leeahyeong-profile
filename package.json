@@ -21,6 +21,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "prestart": "node generate-album-images.js",
     "prebuild": "node generate-album-images.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
