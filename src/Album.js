@@ -1,14 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './Album.css';
+import allImages from './albumImages';
 
 const Album = () => {
-  // In a real application, you would dynamically load these from a server or a build process.
-  // For now, manually list the images from public/images/album.
-  const allImages = [
-    '/images/album/1.webp',
-    '/images/album/2.webp',
-    // Add more image paths here as you add them to public/images/album
-  ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
