@@ -10,25 +10,42 @@ const careerEvents = [
 ];
 
 function CareerTimeline() {
+  const circleRadius = 15;
+  const topOffset = 10; // Amount to move the top circle down
   const eventHeight = 120; // Approximate height of each event card + spacing
-  const svgHeight = careerEvents.length * eventHeight + 50; // Adjust SVG height based on number of events
+  const totalContentHeight = careerEvents.length * eventHeight; // Total height for event cards
+  const svgTotalHeight = totalContentHeight + 2 * circleRadius + topOffset; // Total SVG height including circles and offset
 
   return (
-    <div className="tree-timeline-container" style={{ height: `${svgHeight}px` }}>
-      <svg className="tree-svg" viewBox={`0 0 100 ${svgHeight}`}>
-        {/* Tree Trunk */}
-        <rect x="48" y="0" width="4" height={svgHeight} fill="#8B4513" />
+    <div className="tree-timeline-container" style={{ height: `${svgTotalHeight}px` }}>
+      <svg className="tree-svg" viewBox={`0 0 100 ${svgTotalHeight}`}>
+        {/* Tree Trunk - middle part */}
+        <rect x="47" y={circleRadius + topOffset} width="6" height={totalContentHeight} fill="#8B4513" />
+        
+        {/* career circles */}
+        {careerEvents.map((event, index) => {
+          return (
+            <circle
+              key={index}
+              cx="50"
+              cy={eventHeight / 1.5 + index * eventHeight}
+              r={circleRadius}
+              fill="#8B4513"
+            />
+          );
+        })}
+
         {/* No branches here, they will be drawn by CSS pseudo-elements */}
       </svg>
       {careerEvents.map((event, index) => {
-        const yPos = (index * eventHeight) + (eventHeight / 2);
+        const branchY = circleRadius + topOffset + (index * eventHeight) + (eventHeight / 2);
         const isLeft = index % 2 === 0;
 
         return (
           <div
             className={`timeline-event-card ${isLeft ? 'left' : 'right'}`}
             key={index}
-            style={{ top: `${yPos - (eventHeight / 2) + 20}px` }} // Adjust top to center card with branch
+            style={{ top: `${branchY - (eventHeight / 2)}px` }} // Adjust top to center card with branch
           >
             <Card>
               <Card.Body>
