@@ -3,10 +3,10 @@ import { Card } from 'react-bootstrap';
 import './CareerTimeline.css';
 
 const careerEvents = [
-  { year: '2015年', description: '以啦啦隊員身份出道' },
-  { year: '2018年', description: '擔任韓國職棒NC恐龍啦啦隊' },
-  { year: '2020年', description: '轉戰韓國職棒KT巫師啦啦隊' },
   { year: '2023年', description: '加入台灣職棒富邦悍將啦啦隊Fubon Angels' },
+  { year: '2020年', description: '轉戰韓國職棒KT巫師啦啦隊' },
+  { year: '2018年', description: '擔任韓國職棒NC恐龍啦啦隊' },
+  { year: '2015年', description: '以啦啦隊員身份出道' },
 ];
 
 function CareerTimeline() {
